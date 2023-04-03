@@ -12,7 +12,7 @@ from todo.models import Task, Tag, Worker
 @login_required
 def index(request):
     """View function for the home page of the site."""
-    queryset = Task.objects.all()
+    queryset = Task.objects.prefetch_related("tags")
     num_tasks = queryset.count()
     num_finished_tasks = queryset.filter(
         status=True
@@ -52,12 +52,12 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Task.objects.all()
+        queryset = Task.objects.prefetch_related("tags")
         form = TaskNameSearchForm(self.request.GET)
 
         if form.is_valid():
             return queryset.filter(
-                name__contains=form.cleaned_data["name"]
+                name__icontains=form.cleaned_data["name"]
             )
 
 

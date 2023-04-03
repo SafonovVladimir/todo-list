@@ -74,6 +74,8 @@ TEMPLATES = [
     },
 ]
 
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
 WSGI_APPLICATION = "todo_settings.wsgi.application"
 
 

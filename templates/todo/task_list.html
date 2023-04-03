@@ -41,7 +41,12 @@
         {% endif %}
       </h4>
       <p><strong>{{ task.content }}</strong></p>
-      <p>Created: {{ task.created_at }}. Deadline: {{ task.deadline }}</p>
+      <p>
+        Created: {{ task.created_at }}
+        {% if not task.status %}
+          Deadline: {{ task.deadline }}
+        {% endif %}
+      </p>
       <p>Tags:
         {% for tag in task.tags.all %}
           {{ tag.name }}

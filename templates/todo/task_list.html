@@ -40,8 +40,8 @@
           </a>
         {% endif %}
       </h4>
-      <p>{{ task.content }}</p>
-      <p>Created: {{ task.created_at }}</p>
+      <p><strong>{{ task.content }}</strong></p>
+      <p>Created: {{ task.created_at }}. Deadline: {{ task.deadline }}</p>
       <p>Tags:
         {% for tag in task.tags.all %}
           {{ tag.name }}

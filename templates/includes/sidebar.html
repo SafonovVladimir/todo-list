@@ -11,8 +11,10 @@
   <br>
   <li class="list-group-item"><a href="{% url 'todo_list:index' %}">Home</a>
   </li>
-  <li class="list-group-item"><a href="{% url 'todo_list:task-list' %}">All
-    tasks</a></li>
-  <li class="list-group-item"><a href="{% url 'todo_list:tag-list' %}">Tags</a>
+  <li class="list-group-item">
+    <a href="{% url 'todo_list:task-list' %}">Tasks</a>
+  </li>
+  <li class="list-group-item">
+    <a href="{% url 'todo_list:tag-list' %}">Tags</a>
   </li>
 </ul>

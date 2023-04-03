@@ -87,8 +87,7 @@ class TagCreateView(generic.CreateView):
 
 
 class TagDetailView(generic.DetailView):
-    model = Task
-
+    model = Tag
 
 class TagUpdateView(generic.UpdateView):
     model = Tag

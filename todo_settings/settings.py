@@ -87,7 +87,7 @@ DATABASES = {
     }
 }
 
-# AUTH_USER_MODEL = "task.Worker"
+AUTH_USER_MODEL = "todo.Worker"
 
 LOGIN_REDIRECT_URL = "/"
 

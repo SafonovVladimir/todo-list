@@ -6,23 +6,41 @@
     Tag list
     <a href="{% url 'todo_list:tag-create' %}"
        class="btn btn-primary link-to-page">
-      Create
+      Add
     </a>
   </h1>
   <br>
 
   {% if tag_list %}
-    <ul>
+
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
       {% for tag in tag_list %}
-        <li>
-          {{ tag.id }}
-          <a href="{% url "todo_list:tag-detail" pk=tag.id %} ">
-            {{ tag.name }}
-          </a>
-        </li>
+        <tr>
+          <td>
+            <a href="{% url "todo_list:tag-detail" pk=tag.id %} ">
+              {{ tag.name }}</a>
+          </td>
+          <td>
+            <a href="{% url 'todo_list:tag-update' pk=tag.id %}">
+              Update
+            </a>
+          </td>
+          <td>
+            <a style="color: red"
+               href="{% url 'todo_list:tag-delete' pk=tag.id %}">
+              Delete
+            </a>
+          </td>
+        </tr>
       {% endfor %}
-    </ul>
+    </table>
   {% else %}
-    <p>There are no tags in service</p>
+    <p>There are no task in the service.</p>
   {% endif %}
 {% endblock %}

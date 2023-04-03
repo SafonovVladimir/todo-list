@@ -4,10 +4,10 @@
 
 {% block content %}
   <h1>
-    Task List
+    TODO list
     <a href="{% url 'todo_list:task-create' %}"
        class="btn btn-primary link-to-page">
-      Create
+      Add task
     </a>
   </h1>
   <form action="" method="get" class="form-inline">
@@ -17,52 +17,42 @@
   <br>
 
   {% if task_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Deadline</th>
-        <th>Status</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
 
-      {% for task in task_list %}
-        <tr>
-          <td>
-            {{ task.id }}
-          </td>
-          <td>
-            {{ task.name }}
-          </td>
-          <td>
-            {{ task.deadline }}
-          </td>
-          <td style="text-align: center;">
-            {% if task.status %}
-              <img src="{% static 'img/complete.png' %}" alt=""
-                   width="30"/>
-            {% else %}
-              <img src="{% static 'img/incomplete.png' %}" alt=""
-                   width="30"/>
-            {% endif %}
-          </td>
-          <td>
-            <a href="{% url 'todo_list:task-update' pk=task.id %}">
-              Update
-            </a>
-          </td>
-          <td>
-            <a style="color: red"
-               href="{% url 'todo_list:task-delete' pk=task.id %}">
-              Delete
-            </a>
-          </td>
-        </tr>
-      {% endfor %}
-    </table>
+    {% for task in task_list %}
+      <p>
+      <h4>{{ task.name }}:
+        {% if task.status %}
+          <img src="{% static 'img/complete.png' %}" alt=""
+               width="30"/>
+        {% else %}
+          <img src="{% static 'img/incomplete.png' %}" alt=""
+               width="30"/>
+        {% endif %}
+        {% if task.status %}
+          <a href="{% url 'todo_list:toggle-complete-task' pk=task.id %}"
+             class="btn btn-danger link-to-page">
+            Undo
+          </a>
+        {% else %}
+          <a href="{% url 'todo_list:toggle-complete-task' pk=task.id %}"
+             class="btn btn-success link-to-page">
+            Complete
+          </a>
+        {% endif %}
+      </h4>
+      <p>{{ task.content }}</p>
+      <p>Created: {{ task.created_at }}</p>
+      <p>Tags:
+        {% for tag in task.tags.all %}
+          {{ tag.name }}
+        {% endfor %}
+        <a href="{% url 'todo_list:task-update' pk=task.id %}"
+           class="manage-task-tags">Update</a>
+        <a href="{% url 'todo_list:task-delete' pk=task.id %}"
+           class="manage-task-tags">Delete</a>
+      </p>
 
-  {% else %}
-    <p>There are no task in the service.</p>
+      <hr>
+    {% endfor %}
   {% endif %}
 {% endblock %}

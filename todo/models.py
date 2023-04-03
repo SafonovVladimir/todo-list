@@ -30,7 +30,7 @@ class Task(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self):
-        return self.content
+        return self.name
 
 
 class Tag(models.Model):

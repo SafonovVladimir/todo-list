@@ -86,6 +86,10 @@ class TagCreateView(generic.CreateView):
     success_url = reverse_lazy("todo_list:tag-list")
 
 
+class TagDetailView(generic.DetailView):
+    model = Task
+
+
 class TagUpdateView(generic.UpdateView):
     model = Tag
     fields = "__all__"

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load crispy_forms_filters %}
 
 {% block content %}
@@ -37,9 +38,18 @@
           <td>
             {{ task.deadline }}
           </td>
-          <td>
-            {{ task.status }}
+          <td style="text-align: center;">
+            {% if task.status %}
+              <img src="{% static 'img/complete.png' %}" alt=""
+                   width="30"/>
+            {% else %}
+              <img src="{% static 'img/incomplete.png' %}" alt=""
+                   width="30"/>
+            {% endif %}
           </td>
+          {#          <td>#}
+          {#            {{ task.status }}#}
+          {#          </td>#}
           <td>
             <a href="{% url 'todo_list:task-update' pk=task.id %}">
               Update

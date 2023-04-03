@@ -19,8 +19,8 @@
     <ul>
       {% for tag in tag_list %}
         <li>
-          <a href="{% url "todo_list:tag-detail" pk=tag.id %} ">{{ tag.id }}</a>
-          {{ tag.name }}
+          {{ tag.id }}
+          <a href="{% url "todo_list:tag-detail" pk=tag.id %} ">{{ tag.name }}</a>
         </li>
       {% endfor %}
     </ul>

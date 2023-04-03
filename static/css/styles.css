@@ -1,0 +1,65 @@
+.container-fluid {
+    width: 100%;
+}
+
+.h1-tag-form {
+    display: block;
+    text-align: center;
+}
+
+.wrapper-tag-form {
+    display: flex;
+    justify-content: center;
+}
+
+.tag-form {
+    width: 50%;
+}
+
+.form-list-find {
+    /*display: block;*/
+    height: 40px;
+    width: 20%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d2d6da;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.link-to-page {
+    float: right;
+    margin: 0 2px 0 2px;
+}
+
+.task-priority-button {
+    color: white;
+    background: red;
+    border-radius: 7px;
+    border: none;
+}
+
+.text-incompleted-color {
+    color: black;
+    font-weight: bold;
+}
+
+.text-incompleted-color:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.text-completed-color {
+    color: #b6b6b6;
+}
+
+#div_id_deadline div {
+    display: flex;
+}

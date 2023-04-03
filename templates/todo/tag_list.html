@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    Tag list
+    <a href="{% url 'todo_list:tag-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="🔎">
+  </form>
+  <br>
+
+  {% if tag_list %}
+    <ul>
+      {% for tag in tag_list %}
+        <li>
+          <a href="{% url "todo_list:tag-detail" pk=tag.id %} ">{{ tag.id }}</a>
+          {{ tag.name }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no tags in service</p>
+  {% endif %}
+{% endblock %}
